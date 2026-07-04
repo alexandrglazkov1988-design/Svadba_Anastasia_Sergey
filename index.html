@@ -439,14 +439,39 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
-  main, .detail-page { padding: 72px 20px 80px; }
-  .top-nav { padding: 0 20px; }
-  .timeline-card { padding: 16px 18px; }
-  .timeline-card .card-header { flex-direction: column; gap: 2px; }
-  .detail-body { padding: 28px 20px; }
-  .main-header { padding: 56px 0 48px; }
-  .main-header .names { font-size: clamp(32px, 10vw, 52px); }
-  .detail-header .detail-title { font-size: clamp(28px, 7vw, 40px); }
+  main, .detail-page { padding: 72px 16px 80px; }
+  .top-nav { padding: 0 16px; height: 48px; }
+  .top-nav .nav-title { font-size: 14px; }
+  .main-header { padding: 48px 0 40px; }
+  .main-header .names { font-size: clamp(28px, 10vw, 44px); }
+  .main-header .date { font-size: 12px; letter-spacing: 4px; margin-top: 20px; }
+  .main-header .subtitle { font-size: 10px; }
+  .main-header > div[style] { position: static !important; text-align: center !important; margin-bottom: 20px; display: flex !important; justify-content: center !important; align-items: center !important; gap: 10px; }
+  .main-header > div[style] img { width: 40px; height: 40px; }
+  .timeline { padding-left: 20px; }
+  .timeline::before { left: 6px; }
+  .timeline-section.major { padding-left: 28px; }
+  .timeline-section.major::before { width: 14px; height: 14px; left: -1px; top: 10px; }
+  .group-subitems { padding-left: 28px; }
+  .group-subitems::before { left: 6px; }
+  .timeline-section.sub { padding-left: 16px; }
+  .timeline-section.sub::before { left: 2px; width: 6px; height: 6px; }
+  .timeline-section.sub::after { width: 8px; left: 5px; }
+  .timeline-card { padding: 14px 16px; }
+  .timeline-card .card-header { flex-direction: column; gap: 4px; }
+  .timeline-card .time { font-size: 10px; }
+  .timeline-card .card-title { font-size: 15px !important; }
+  .timeline-card .card-desc { font-size: 11px; }
+  .group-toggle { font-size: 8px; padding: 6px 10px; margin-top: 8px; }
+  .detail-header { padding: 40px 0 32px; }
+  .detail-header .detail-title { font-size: clamp(24px, 7vw, 36px); }
+  .detail-body { padding: 20px 16px; }
+  .content-section { margin: 28px 0; }
+  .interactive-block .interactive-title { font-size: 14px; }
+  .interactive-block .interactive-text { padding: 18px 20px; }
+  .host-toggle { padding: 12px 14px; font-size: 10px; }
+  .host-content .host-text { padding: 14px 16px; font-size: 12px; }
+  .note-toggle { padding: 10px 14px; font-size: 9px; }
 }
   padding: 14px 18px;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -540,20 +565,6 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
-  .timeline-card { padding: 16px; }
-  .timeline-card .card-header { flex-direction: column; gap: 4px; }
-  .timeline-card .time { align-self: flex-start; }
-  .detail-body { padding: 20px; }
-  .timeline::before { left: 16px; }
-  .timeline-section.major { padding-left: 44px; }
-  .timeline-section.major::before { left: 5px; }
-  .group-subitems { padding-left: 44px; }
-  .group-subitems::before { left: 16px; }
-  .group-subitems.collapsed { padding-left: 44px; }
-  .timeline-section.sub { padding-left: 24px; }
-  .timeline-section.sub::before { left: -8px; width: 10px; height: 10px; }
-  .timeline-section.sub::after { width: 12px; left: 2px; }
-  .group-toggle { margin-top: 4px; }
 }
 </style>
 </head>
