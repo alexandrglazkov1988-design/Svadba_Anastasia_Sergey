@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Свадьба Сергея и Анастасии — Сценарий</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --ink: #111111;
+  --ink-soft: #444444;
+  --ink-muted: #888888;
+  --line: #E0E0E0;
+  --line-soft: #F0F0F0;
+  --accent: #111111;
+  --accent-soft: #555555;
+  --accent-pale: #F5F5F5;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nav ── */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  padding: 0 40px; height: 52px;
+  display: flex; align-items: center; gap: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.top-nav .back-btn {
+  background: none; border: none;
+  display: none; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  font-size: 14px; color: var(--ink-muted);
+  cursor: pointer; transition: color 0.2s;
+}
+.top-nav .back-btn:hover { color: var(--ink); }
+.top-nav .back-btn.visible { display: flex; }
+.top-nav .nav-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: var(--ink); letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── Pages ── */
+.page { display: none; }
+.page.active { display: block; animation: fadeUp 0.4s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ── Main ── */
+main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
+
+/* ── Header ── */
+.main-header {
+  text-align: left;
+  padding: 80px 0 72px;
+}
+.main-header .names {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(42px, 10vw, 72px);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.main-header .amp {
+  font-weight: 300;
+  color: var(--ink-muted);
+  margin: 0 0.1em;
+  font-size: 0.6em;
+  text-transform: lowercase;
+  font-style: italic;
+}
+.main-header .date {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 500;
+  color: var(--ink-muted);
+  margin-top: 28px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.main-header .divider {
+  width: 40px; height: 2px;
+  background: var(--ink);
+  margin: 28px 0;
+}
+.main-header .subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--ink-muted);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── Timeline ── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 7px; top: 0; bottom: 0;
+  width: 1px; background: var(--line);
+}
+
+/* ── Groups ── */
+.timeline-group { margin-bottom: 32px; }
+.group-subitems {
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, margin 0.3s;
+  max-height: 8000px; opacity: 1; margin-top: 8px;
+}
+.group-subitems.collapsed { max-height: 0; opacity: 0; margin-top: 0; }
+
+/* ── Toggle ── */
+.group-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-pale);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 600;
+  color: var(--ink-muted);
+  padding: 8px 14px;
+  transition: all 0.2s;
+  margin-top: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.group-toggle:hover { background: var(--line); color: var(--ink); }
+.group-toggle .toggle-arrow-group {
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  font-size: 6px;
+}
+.group-toggle .toggle-arrow-group.collapsed { transform: rotate(-90deg); }
+
+/* ── Major block ── */
+.timeline-section.major {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 8px;
+}
+.timeline-section.major::before {
+  content: '';
+  position: absolute; left: -1px; top: 8px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  z-index: 2;
+}
+
+/* ── Sub ── */
+.timeline-section.sub {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 4px;
+}
+.timeline-section.sub::before {
+  content: '';
+  position: absolute; left: 4px; top: 8px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--ink-muted);
+}
+.timeline-section.sub.break::before { background: var(--ink); }
+
+.timeline-section.sub.break .timeline-card {
+  background: var(--accent-pale);
+  border-style: dashed;
+}
+.timeline-section.sub.break .timeline-card:hover {
+  border-color: var(--ink-muted);
+  box-shadow: none;
+}
+.timeline-section.sub.break .timeline-card .card-title {
+  color: var(--ink-muted);
+}
+
+/* ── Cards ── */
+.timeline-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.3s;
+}
+.timeline-card:hover {
+  border-color: var(--ink);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.timeline-section.major .timeline-card {
+  background: #F0F0F0;
+  border-color: #E0E0E0;
+}
+.timeline-section.major .timeline-card:hover {
+  background: #E8E8E8;
+  border-color: var(--ink);
+}
+
+.timeline-card .card-header {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+}
+.timeline-card .time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+.timeline-card .duration {
+  font-size: 10px; color: var(--ink-muted); font-weight: 400;
+}
+.timeline-card .card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--ink);
+  margin: 8px 0 4px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.timeline-card .card-desc {
+  font-size: 12px; color: var(--ink-muted);
+  line-height: 1.5;
+}
+.timeline-card .card-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px; font-weight: 600;
+  padding: 3px 10px;
+  margin-top: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.timeline-card .card-badge.interactive { background: var(--ink); color: var(--bg); }
+.timeline-card .card-badge.break { background: var(--line-soft); color: var(--ink-soft); }
+.timeline-card .card-badge.ceremony { background: var(--ink); color: var(--bg); }
+.timeline-card .card-badge.food { background: var(--line-soft); color: var(--ink-soft); }
+.timeline-card .card-badge.dance { background: var(--ink); color: var(--bg); }
+
+/* ── Detail ── */
+.detail-page { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
+.detail-header { text-align: left; padding: 64px 0 56px; }
+.detail-header .detail-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 600;
+  color: var(--ink-muted); letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.detail-header .detail-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 7vw, 48px);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 10px 0 16px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.detail-header .detail-duration {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; color: var(--ink-muted);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.detail-body {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 40px;
+  margin-top: 32px;
+}
+
+/* ── Content sections ── */
+.content-section { margin: 40px 0; }
+.content-section:first-child { margin-top: 0; }
+.section-label {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  color: var(--ink-muted);
+}
+.section-label .label-icon { font-size: 12px; }
+
+.desc-block .desc-text {
+  font-size: 13px; line-height: 1.9;
+  color: var(--ink-soft);
+}
+.desc-block .desc-text p { margin-bottom: 14px; }
+.desc-block .desc-text p:last-child { margin-bottom: 0; }
+.desc-block .desc-text b { color: var(--ink); font-weight: 600; }
+
+.stage-block .section-label { color: var(--ink); }
+.stage-block .stage-text {
+  background: var(--accent-pale);
+  border-left: 2px solid var(--ink);
+  padding: 16px 20px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+.interactive-block .section-label { color: var(--ink); }
+.interactive-block .interactive-text {
+  background: var(--accent-pale);
+  border-left: 3px solid var(--ink);
+  padding: 24px 28px;
+}
+.interactive-block .interactive-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.interactive-block .interactive-time {
+  font-size: 11px;
+  font-weight: 500;
+  color: #C47A7A;
+  margin-left: 6px;
+}
+.interactive-block .interactive-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+.note-block .section-label { color: var(--ink-muted); }
+
+.note-toggle {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--accent-pale);
+  border: 1px solid var(--line);
+  padding: 12px 18px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: var(--ink-muted);
+  transition: all 0.2s;
+  user-select: none;
+  width: 100%; text-align: left;
+  letter-spacing: 0.5px;
+}
+.note-toggle:hover { background: var(--line); color: var(--ink); }
+.note-toggle .toggle-icon { font-size: 14px; flex-shrink: 0; }
+.note-toggle .toggle-label { flex: 1; }
+.note-toggle .toggle-arrow {
+  font-size: 7px;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  flex-shrink: 0; opacity: 0.5;
+}
+
+.note-content {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, margin 0.3s;
+  opacity: 0; margin-top: 0;
+}
+.note-content.open { max-height: 9000px; opacity: 1; margin-top: 10px; }
+
+.note-content .note-text {
+  background: var(--accent-pale);
+  border-left: 2px solid var(--ink-muted);
+  padding: 16px 20px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* ── Host ── */
+.host-block .section-label { color: var(--ink); }
+
+.host-toggle {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--ink);
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: var(--bg);
+  transition: opacity 0.2s;
+  user-select: none;
+  width: 100%; text-align: left;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.host-toggle:hover { opacity: 0.85; }
+.host-toggle .toggle-icon { font-size: 14px; flex-shrink: 0; }
+.host-toggle .toggle-label { flex: 1; }
+.host-toggle .toggle-arrow {
+  font-size: 8px;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  flex-shrink: 0; opacity: 0.6;
+}
+
+.host-content {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, margin 0.3s;
+  opacity: 0; margin-top: 0;
+}
+.host-content.open { max-height: 9000px; opacity: 1; margin-top: 12px; }
+
+.host-content .host-text {
+  background: var(--accent-pale);
+  border-left: 2px solid var(--ink);
+  padding: 20px 24px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+  font-size: 13px;
+}
+.host-content .host-text i {
+  color: var(--ink-muted); font-style: normal;
+  font-size: 10px; display: block; margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  main, .detail-page { padding: 72px 20px 80px; }
+  .top-nav { padding: 0 20px; }
+  .timeline-card { padding: 16px 18px; }
+  .timeline-card .card-header { flex-direction: column; gap: 2px; }
+  .detail-body { padding: 28px 20px; }
+  .main-header { padding: 56px 0 48px; }
+  .main-header .names { font-size: clamp(32px, 10vw, 52px); }
+  .detail-header .detail-title { font-size: clamp(28px, 7vw, 40px); }
+}
+  padding: 14px 18px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 14px;
+  color: #4a1a2e;
+  line-height: 1.6;
+}
+
+/* Note block */
+.note-block { }
+.note-block .section-label { color: var(--green); border-color: #a5d6a7; }
+.note-block .note-text {
+  background: var(--green-bg);
+  border-left: 4px solid var(--green);
+  padding: 14px 18px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 14px;
+  color: #1b5e20;
+  line-height: 1.6;
+}
+
+/* Host speech — collapsible */
+.host-block { }
+.host-block .section-label { color: var(--gold-dark); border-color: var(--gold-light); }
+
+.host-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #fff8e1, #fff3cd);
+  border: 2px solid var(--gold-light);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5d4e37;
+  transition: all 0.25s ease;
+  user-select: none;
+  width: 100%;
+  text-align: left;
+}
+
+.host-toggle:hover {
+  background: linear-gradient(135deg, #fff3cd, #ffe082);
+  border-color: var(--gold);
+}
+
+.host-toggle .toggle-icon {
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.host-toggle .toggle-label {
+  flex: 1;
+}
+
+.host-toggle .toggle-arrow {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  color: var(--gold-dark);
+}
+
+.host-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.3s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.host-content.open {
+  max-height: 5000px;
+  opacity: 1;
+  margin-top: 12px;
+}
+
+.host-content .host-text {
+  background: linear-gradient(135deg, #fff8e1, #fff3cd);
+  border-left: 4px solid var(--gold);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  color: #5d4e37;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .timeline-card { padding: 16px; }
+  .timeline-card .card-header { flex-direction: column; gap: 4px; }
+  .timeline-card .time { align-self: flex-start; }
+  .detail-body { padding: 20px; }
+  .timeline::before { left: 16px; }
+  .timeline-section.major { padding-left: 44px; }
+  .timeline-section.major::before { left: 5px; }
+  .group-subitems { padding-left: 44px; }
+  .group-subitems::before { left: 16px; }
+  .group-subitems.collapsed { padding-left: 44px; }
+  .timeline-section.sub { padding-left: 24px; }
+  .timeline-section.sub::before { left: -8px; width: 10px; height: 10px; }
+  .timeline-section.sub::after { width: 12px; left: 2px; }
+  .group-toggle { margin-top: 4px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <button class="back-btn" id="backBtn" onclick="goBack()">←</button>
+  <span class="nav-title" id="navTitle">Свадьба Сергея и Анастасии</span>
+</nav>
+
+<!-- ======================== MAIN PAGE ======================== -->
+<div class="page active" id="page-main">
+  <main>
+<div class="main-header" style="position: relative;">
+  <div style="position: absolute; top: 0; right: 0; display: flex; align-items: center; gap: 12px;">
+    <div style="text-align: right;">
+      <span style="font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 500; color: var(--ink-muted); letter-spacing: 2px; text-transform: uppercase;">Ведущий</span><br>
+      <span style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--ink); letter-spacing: 1px; text-transform: uppercase;">Александр Глазков</span>
+    </div>
+    <img src="аватар.png" alt="Александр Глазков" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line);">
+  </div>
+  <div class="names">Сергей <span class="amp">&</span> Анастасия</div>
+  <div class="date" style="color: #C47A7A; font-size: 14px; letter-spacing: 6px;">07 · 07 · 2026</div>
+  <div class="divider"></div>
+  <div class="subtitle">Программа дня · Тайминг</div>
+</div>
+
+    <div class="timeline">
+
+      <!-- WELCOME (standalone) -->
+      <div class="timeline-section major">
+        <div class="timeline-card" onclick="showDetail('welcome')">
+          <div class="card-header"><div><span class="time">16:30 – 17:00</span><div class="card-title">👋 WELCOME-зона</div></div><span class="duration">30 мин</span></div>
+          <div class="card-desc">Встреча гостей, ставки на свадьбу, клятвы молодожёнам</div>
+          <span class="card-badge interactive">интерактив</span>
+        </div>
+      </div>
+
+      <!-- CEREMONY (standalone) -->
+      <div class="timeline-section major">
+        <div class="timeline-card" onclick="showDetail('ceremony')">
+          <div class="card-header"><div><span class="time">17:00 – 17:30</span><div class="card-title">💒 Выездная церемония</div></div><span class="duration">30 мин</span></div>
+          <div class="card-desc">Клятва гостей, выход пары, объявление мужем и женой</div>
+          <span class="card-badge ceremony">церемония</span>
+        </div>
+      </div>
+
+      <!-- ===== 1-Й БЛОК + subs ===== -->
+      <div class="timeline-group">
+        <div class="timeline-section major">
+          <div class="timeline-card">
+            <div onclick="showDetail('block1')">
+              <div class="card-header"><div><span class="time">17:30 – 19:00</span><div class="card-title">🥂 Начало банкета · 1-й блок</div></div><span class="duration">1 ч 30 мин</span></div>
+              <div class="card-desc">Пролог, первый тост, гастропауза, знакомство, выход молодых, служба поддержки, детские фото, первый танец</div>
+              <span class="card-badge dance">основной блок</span>
+            </div>
+            <button class="group-toggle" onclick="event.stopPropagation(); toggleGroup(this)" title="Свернуть / развернуть">
+              <span class="toggle-arrow-group">▼</span>
+              <span class="toggle-text">8 блоков</span>
+            </button>
+          </div>
+        </div>
+        <div class="group-subitems">
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('prolog')"><div class="card-header"><div><span class="time">17:30 – 17:35</span><div class="card-title" style="font-size:17px">🎤 Пролог</div></div><span class="duration">5 мин</span></div><div class="card-desc">Вступительное слово ведущего</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('first-toast')"><div class="card-header"><div><span class="time">17:35 – 17:40</span><div class="card-title" style="font-size:17px">🥂 Первый тост</div></div><span class="duration">5 мин</span></div><div class="card-desc">Тост ведущего за молодожёнов</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('gastropause')"><div class="card-header"><div><span class="time">17:40 – 17:55</span><div class="card-title" style="font-size:17px">🍽️ Гастропауза</div></div><span class="duration">15 мин</span></div><div class="card-desc">Гости едят закуски, DJ фоном</div><span class="card-badge food">перерыв</span></div></div>
+          <div class="timeline-section sub break"><div class="timeline-card"><div class="card-header"><div><span class="time">17:40 – 17:55</span><div class="card-title" style="font-size:14px">🚬 Перекур</div></div></div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('chat-game')"><div class="card-header"><div><span class="time">17:55 – 18:05</span><div class="card-title" style="font-size:17px">💬 Болталка-знакомство</div></div><span class="duration">10 мин</span></div><div class="card-desc">Интерактив-знакомство всего зала, чествование родителей</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('video-rules')"><div class="card-header"><div><span class="time">18:05 – 18:15</span><div class="card-title" style="font-size:17px">🎬 Выход молодых + видео + правила</div></div><span class="duration">10 мин</span></div><div class="card-desc">Выход Сергея и Насти, видео предложения, правила банкета</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('support')"><div class="card-header"><div><span class="time">18:15 – 18:25</span><div class="card-title" style="font-size:17px">👨‍👩‍👧 Служба поддержки 24/7</div></div><span class="duration">10 мин</span></div><div class="card-desc">Интерактив-загадка + приглашение родителей и тост</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('child-photo')"><div class="card-header"><div><span class="time">18:25 – 18:35</span><div class="card-title" style="font-size:17px">📸 Детские фотографии</div></div><span class="duration">10 мин</span></div><div class="card-desc">Детские фото на экране, истории от родителей, ИИ-анимация</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('first-dance')"><div class="card-header"><div><span class="time">18:35 – 19:00</span><div class="card-title" style="font-size:17px">💃 Первый танец</div></div><span class="duration">25 мин</span></div><div class="card-desc">Первый танец молодожёнов → DJ открывает танцпол</div><span class="card-badge dance">танец</span></div></div>
+        </div>
+      </div>
+
+      <!-- ===== 2-Й БЛОК + subs ===== -->
+      <div class="timeline-group">
+        <div class="timeline-section major">
+          <div class="timeline-card">
+            <div onclick="showDetail('block2')">
+              <div class="card-header"><div><span class="time">19:00 – 20:30</span><div class="card-title">🎵 Второй блок</div></div><span class="duration">1 ч 30 мин</span></div>
+              <div class="card-desc">Свадебный Twinby, поздравления гостей, танцевальная пауза</div>
+              <span class="card-badge interactive">основной блок</span>
+            </div>
+            <button class="group-toggle" onclick="event.stopPropagation(); toggleGroup(this)" title="Свернуть / развернуть">
+              <span class="toggle-arrow-group">▼</span>
+              <span class="toggle-text">3 блока</span>
+            </button>
+          </div>
+        </div>
+        <div class="group-subitems">
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('twinby')"><div class="card-header"><div><span class="time">19:00 – 19:30</span><div class="card-title" style="font-size:17px">❓ Свадебный Twinby</div></div><span class="duration">30 мин</span></div><div class="card-desc">Угадайка с семейными привычками — совместимость зала с парой</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('congratulations')"><div class="card-header"><div><span class="time">19:30 – 19:50</span><div class="card-title" style="font-size:17px">🎁 Поздравления гостей</div></div><span class="duration">20 мин</span></div><div class="card-desc">Открытый микрофон для тёплых слов молодожёнам</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('dance-pause1')"><div class="card-header"><div><span class="time">19:50 – 20:30</span><div class="card-title" style="font-size:17px">🎶 Танцевальная пауза</div></div><span class="duration">40 мин</span></div><div class="card-desc">DJ-сет, отдых, окно для перекура</div><span class="card-badge dance">танцы</span></div></div>
+          <div class="timeline-section sub break"><div class="timeline-card"><div class="card-header"><div><span class="time">19:50 – 20:00</span><div class="card-title" style="font-size:14px">🚬 Перекур</div></div></div></div></div>
+        </div>
+      </div>
+
+      <!-- ===== 3-Й БЛОК + subs ===== -->
+      <div class="timeline-group">
+        <div class="timeline-section major">
+          <div class="timeline-card">
+            <div onclick="showDetail('block3')">
+              <div class="card-header"><div><span class="time">20:30 – 22:00</span><div class="card-title">🎤 Третий блок</div></div><span class="duration">1 ч 30 мин</span></div>
+              <div class="card-desc">Музыкальный ДНК-тест, саженец, DJ-сет, сбор перед очагом</div>
+              <span class="card-badge interactive">основной блок</span>
+            </div>
+            <button class="group-toggle" onclick="event.stopPropagation(); toggleGroup(this)" title="Свернуть / развернуть">
+              <span class="toggle-arrow-group">▼</span>
+              <span class="toggle-text">4 блока</span>
+            </button>
+          </div>
+        </div>
+        <div class="group-subitems">
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('dna-test')"><div class="card-header"><div><span class="time">20:30 – 21:10</span><div class="card-title" style="font-size:17px">🧬 Музыкальный ДНК-тест</div></div><span class="duration">40 мин</span></div><div class="card-desc">3 раунда: «С первой ноты», «Спой со звездой», «Dance Revolution»</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('sapling')"><div class="card-header"><div><span class="time">21:10 – 21:20</span><div class="card-title" style="font-size:17px">🌱 Саженец + бутоньерка</div></div><span class="duration">10 мин</span></div><div class="card-desc">Бросок саженца вместо букета, бросок бутоньерки</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('dj-set')"><div class="card-header"><div><span class="time">21:20 – 21:50</span><div class="card-title" style="font-size:17px">🎧 DJ-сет</div></div><span class="duration">30 мин</span></div><div class="card-desc">Свободные танцы, напоминание о ставках</div><span class="card-badge dance">танцы</span></div></div>
+          <div class="timeline-section sub break"><div class="timeline-card"><div class="card-header"><div><span class="time">21:20 – 21:30</span><div class="card-title" style="font-size:14px">🚬 Перекур</div></div></div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('gather-hearth')"><div class="card-header"><div><span class="time">21:50 – 22:00</span><div class="card-title" style="font-size:17px">🔥 Сбор гостей перед очагом</div></div><span class="duration">10 мин</span></div><div class="card-desc">Музыка тише, приглашение к сцене, настрой на тишину</div><span class="card-badge ceremony">переход</span></div></div>
+        </div>
+      </div>
+
+      <!-- ===== ФИНАЛ + subs ===== -->
+      <div class="timeline-group">
+        <div class="timeline-section major">
+          <div class="timeline-card">
+            <div onclick="showDetail('final')">
+              <div class="card-header"><div><span class="time">22:00 – 23:00</span><div class="card-title">🎊 Финальный блок</div></div><span class="duration">1 час</span></div>
+              <div class="card-desc">Очаг, живой коридор, общее фото, торт, перекур, ставки, клятвы друзей, afterparty</div>
+              <span class="card-badge ceremony">финал</span>
+            </div>
+            <button class="group-toggle" onclick="event.stopPropagation(); toggleGroup(this)" title="Свернуть / развернуть">
+              <span class="toggle-arrow-group">▼</span>
+              <span class="toggle-text">7 блоков</span>
+            </button>
+          </div>
+        </div>
+        <div class="group-subitems">
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('hearth')"><div class="card-header"><div><span class="time">22:00 – 22:10</span><div class="card-title" style="font-size:17px">🕯️ Зажжение семейного очага</div></div><span class="duration">10 мин</span></div><div class="card-desc">Тихая церемония — передача огня от родителей молодожёнам</div><span class="card-badge ceremony">церемония</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('corridor')"><div class="card-header"><div><span class="time">22:10 – 22:20</span><div class="card-title" style="font-size:17px">🤗 Благодарность + живой коридор</div></div><span class="duration">10 мин</span></div><div class="card-desc">Слова молодожёнов, гости шепчут пожелания</div><span class="card-badge ceremony">лирика</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('photo')"><div class="card-header"><div><span class="time">22:20 – 22:25</span><div class="card-title" style="font-size:17px">📷 Общее фото</div></div><span class="duration">5 мин</span></div><div class="card-desc">Общее фото всех гостей</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('cake')"><div class="card-header"><div><span class="time">22:25 – 22:35</span><div class="card-title" style="font-size:17px">🎂 Разрезание торта</div></div><span class="duration">10 мин</span></div><div class="card-desc">Аукцион услуг — кто предложит лучшую услугу, тот получает кусочек</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub break"><div class="timeline-card"><div class="card-header"><div><span class="time">22:35 – 22:45</span><div class="card-title" style="font-size:14px">🚬 Перекур</div></div><span class="duration">10 мин</span></div><div class="card-desc">Последнее окно для курения — анонс финала</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('bets-final')"><div class="card-header"><div><span class="time">22:45 – 22:50</span><div class="card-title" style="font-size:17px">🏆 Финал ставок</div></div><span class="duration">5 мин</span></div><div class="card-desc">Награждение «главного экстрасенса свадьбы»</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('friends-oaths')"><div class="card-header"><div><span class="time">22:50 – 23:00</span><div class="card-title" style="font-size:17px">🎤 Клятвы друзей</div></div><span class="duration">10 мин</span></div><div class="card-desc">Чтение клятв от подружек и друзей — самый смешной момент</div><span class="card-badge interactive">интерактив</span></div></div>
+        </div>
+      </div>
+
+      <!-- Afterparty (standalone) -->
+      <div class="timeline-section major">
+        <div class="timeline-card" onclick="showDetail('afterparty')">
+          <div class="card-header"><div><span class="time">23:00</span><div class="card-title">🎉 Afterparty</div></div><span class="duration">открытый финал</span></div>
+          <div class="card-desc">Свободные танцы до конца вечера</div>
+          <span class="card-badge dance">танцы</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ======================== DETAIL PAGES ======================== -->
+
+<!-- WELCOME -->
+<div class="page" id="detail-welcome">
+  <div class="detail-page">
+    <div class="detail-header">
+      <div class="detail-time">16:30 – 17:00</div>
+      <div class="detail-title">WELCOME-зона</div>
+      <div class="detail-duration">30 минут</div>
+    </div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text">
+          <p>Ведущий встречает гостей у входа, лёгкое общение, фото, музыка фоном. Параллельно координатор или помощник запускают два интерактива с карточками, не дожидаясь, пока соберутся все гости:</p>
+        </div>
+      </div>
+
+      <div class="content-section interactive-block">
+        <div class="section-label"><span class="label-icon">🎯</span> Интерактив</div>
+        <div class="interactive-text">
+          <div class="interactive-title">• Ставки на свадьбу <span class="interactive-time">(весь welcome, 16:30–17:00)</span></div>
+          <div class="interactive-desc">— гости письменно прогнозируют, что случится вечером. Итог подводится в финале — награждение «главного экстрасенса свадьбы».</div>
+        </div>
+      </div>
+
+      <div class="content-section interactive-block">
+        <div class="section-label"><span class="label-icon">🎯</span> Интерактив</div>
+        <div class="interactive-text">
+          <div class="interactive-title">• Клятвы молодожёнам <span class="interactive-time">(весь welcome, 16:30–17:00)</span></div>
+          <div class="interactive-desc">— подружки невесты пишут шуточные клятвы для жениха, друзья жениха — для невесты. Конверты не вскрываются до финала.</div>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего — полный текст welcome</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Приветствие и знакомство</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Добрый вечер! Меня зовут Александр, и сегодня я буду вашим главным навигатором на этот вечер. Не переживайте, маршрут я знаю: сначала улыбаемся, потом аплодируем, потом едим, потом танцуем так, будто завтра не существует.<br><br>
+            Моя задача сегодня — чтобы никто не скучал, все вовремя оказались в нужном месте, а бокалы подозрительно долго не пустовали. Если вдруг кто-то потеряется — ищите меня. Если вдруг потеряюсь я… ну, значит, праздник точно удался.<br><br>
+            Дорогие гости, фуршет работает в режиме «подойти можно, стесняться нельзя». Если вы пока никого не знаете — подойдите к фуршету. Там знакомятся быстрее, чем в любом приложении.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Подводка к карточкам ставок</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            А ещё пока вы знакомитесь — у нас тут открылась небольшая биржа предсказаний. На обычной бирже торгуют акциями, а у нас сегодня — прогнозами. На карточках оставьте свою ставку: что сегодня точно произойдёт. Кто первым пойдёт танцевать, кто первым снимет каблуки, кто расскажет тост в стихах — вариантов масса, но обычно гости придумывают куда смешнее, чем любые подсказки. В конце вечера того, кто угадал больше всех, наградим званием «главный экстрасенс свадьбы» — и да, приз будет соответствующий.<br><br>
+            И отдельно — подружки невесты и друзья жениха, у вас есть секретное задание: заполнить карточки-клятвы. Подружки клянутся за жениха, друзья — за невесту. Это тайна до самого конца вечера, конверты открываются только в финале — так что можно смело фантазировать.<br><br>
+            Через несколько минут начнётся главное событие этого дня — церемония. Бокалы ставим на паузу, разговоры аккуратно паркуем. Смотрим, слушаем, улыбаемся красиво — особенно те, кто попадает в кадр. Мы начинаем.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📌</span> Нужно подготовить
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">карточки для ставок, карточки-клятвы, конверты для клятв, ручки на столах / у входа.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CEREMONY -->
+<div class="page" id="detail-ceremony">
+  <div class="detail-page">
+    <div class="detail-header">
+      <div class="detail-time">17:00 – 17:30</div>
+      <div class="detail-title">Выездная церемония</div>
+      <div class="detail-duration">30 минут</div>
+    </div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text">
+          <p>Разогрев с правилами для гостей (телефоны, съёмка), коллективная шуточная клятва гостей, выход жениха, выход невесты, история любви, клятвы молодожёнов, объявление мужем и женой (важный трюк: объявляют не ведущий, а сами гости хором), поздравления и фотосессия.</p>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего — полный текст церемонии</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Правила для гостей</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, минуту внимания. Через несколько минут с этого места начнётся самое главное. Но сначала — правила, у нас их немного.<br><br>
+            Правило первое: переведите телефоны в бесшумный режим. Не хотелось бы, чтобы самый лиричный момент прервал чей-то рингтон. Для тех, у кого айфоны — это кнопочка сбоку. Для тех, у кого андроид — я не знаю, но вы разберётесь.<br><br>
+            Правило второе: большая просьба не снимать всю церемонию целиком. Получайте удовольствие от момента, а не смотрите на ребят сквозь экран телефона. Чуть-чуть можно, я понимаю. У нас есть фотограф и видеограф, которые снимут всё профессионально и потом пришлют вам. Дайте им делать свою работу.<br><br>
+            И ещё: не выбегайте вперёд со словами «я тааак за вас счастлива» — на кадрах будет только ваш счастливый затылок. Сегодня 40% успеха вечера зависит от нас с вами, 40% — от молодожёнов, и 20% — от игристого. Ваша работа сегодня простая: кайфовать.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Шутка-разрядка</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            И да, шушукаться между собой тоже не стоит, даже прикрывая рот рукой — со стороны выглядит так, будто вы что-то замышляете. А мы-то с вами знаем, что там не всегда серьёзный разговор: бывает, что в самый трогательный момент церемонии слышно «а ты в курсе, что Серёга вчера в очереди за бензином подрался? В итоге выиграл, но полный бак ему всё равно не залили». Поаплодируйте, если узнали себя!
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Коллективная клятва гостей</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            <i>Гости повторяют за ведущим:</i><br>
+            Мы, гости Сергея и Анастасии… в трезвом уме… но не надолго… клянёмся… танцевать до утра… веселиться как в последний раз… дарить наличные… больше, чем Сергей и Настя дарили нам!
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🎭</span> Выход жениха</div>
+        <div class="desc-text">
+          <p>Торжественная встреча у арки: жених выходит первым и уже стоит у арки, ожидая. Настя идёт к арке вместе с дочкой.</p>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Вывод жениха</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            А теперь — сам выход.<br><br>
+            Первым на площадку выходит тот, кто сегодня ждал этой минуты дольше всех. <i>(здесь несколько тёплых фактов о женихе из анкеты)</i>. Сейчас Сергей услышит фразу, которую слышал ещё на линейке в первом классе, на выпускном, когда ему покупали костюм — но только сегодня по праву. Готовы все вместе? Три… четыре… Ну, жени-и-их!
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Выход жениха.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Вывод невесты</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            А теперь — та, ради которой всё это имеет смысл <i>(несколько тёплых фактов о невесте из анкеты)</i>. Каждый папа переживает за свою дочь и боится, что на её пути встретится плохой парень. Но больше всего папа боится, что дочь встретит невероятно хорошего парня — такого, что может забрать её у папы. И Анастасия именно такого встретила. Он сейчас стоит перед вами. Прошу вас под аплодисменты поприветствовать Анастасию — сегодня к арке она идёт за руку со своей дочкой.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Технический момент</div>
+        <div class="stage-text">Выход невесты — трек LIONA «Любовь, похожая на сон». Настя начинает движение с самого начала трека, а в поле зрения гостей попадает только на 31-й секунде — координатору и звукооператору нужно запустить фонограмму заранее, с учётом расстояния от стартовой точки невесты до момента, когда её станет видно гостям, чтобы появление совпало с нужным местом в песне.</div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Вставки по анкете</div>
+        <div class="stage-text">История знакомства пары — вставить по факту анкеты.<br>Клятвы молодожёнов друг другу — вставить по факту анкеты.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Объявление мужем и женой</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            А теперь — самое главное. Вы наверняка слышали фразу «объявляю вас мужем и женой». Если честно, я считаю, что я никто, чтобы объявлять этих двоих мужем и женой. А вот вы — те люди, которые достойны увидеть это своими глазами, а не смотреть потом фотографии со словами «жаль, нас не позвали». Поэтому мужем и женой объявите их вы. Всё остальное я беру на себя — а вы просто скажете фразу вместе со мной. Репетируем: больше воздуха, больше души! Все вместе — объявляем их мужем и женой!
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Общий возглас гостей, первый поцелуй.</div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> После церемонии</div>
+        <div class="desc-text">
+          <p>Церемония завершена. Дальше — фотосессия с гостями и вручение подарков молодым.</p>
+          <p>Пока молодожёны фотографируются, у гостей естественное окно для перекура — этим временем можно не управлять специально, но координатору стоит держать его в голове при расчёте, когда реально начнётся посадка в 17:30.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCK 1 overview -->
+<div class="page" id="detail-block1">
+  <div class="detail-page">
+    <div class="detail-header">
+      <div class="detail-time">17:30 – 19:00</div>
+      <div class="detail-title">Начало банкета · 1-й блок</div>
+      <div class="detail-duration">1 час 30 минут</div>
+    </div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание блока</div>
+        <div class="desc-text">
+          <p>Пролог, первый тост, гастропауза, интерактив-знакомство всего зала, выход молодожёнов, видео предложения, короткие правила банкета, блок «служба поддержки 24/7» с приглашением родителей, детские фото и тёплые слова родителям, первый танец, затем DJ сразу открывает танцпол.</p>
+          <p><b>Важно:</b> гастропауза стоит сразу после первого тоста специально — дальше эмоциональный блок (родители → дети → танец) идёт без остановки на перекур.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-prolog">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">17:30 – 17:35</div><div class="detail-title">Пролог</div><div class="detail-duration">5 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text"><p>Вступительное слово ведущего — короткий юмористический экскурс в историю свадебных традиций, переход к аплодисментам молодожёнам.</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Полный текст пролога</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Экскурс в историю свадеб</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            На Руси всегда умели гулять свадьбы. Три дня, две деревни, одна гармонь — и стол, который заканчивался где-то за горизонтом. Тамада тогда был человеком серьёзным: сказал «гуляем» — значит, гуляли.<br><br>
+            Времена изменились. Вместо гармони — DJ. Вместо сундука с приданым — конверты. Вместо голубей — сторис. Раньше жениха проверяли на силу, теперь — на способность не расплакаться, когда невеста идёт к нему. Раньше невесту выкупали, теперь её просто ждут от визажиста, фотографа и стилиста — и мы пока не знаем, какое испытание было тяжелее.<br><br>
+            Но кое-что не изменилось. Осталась любовь. Осталось желание собрать всех родных за одним столом. И сегодня мы собрались именно поэтому. Аплодисменты молодожёнам!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-first-toast">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">17:35 – 17:40</div><div class="detail-title">Первый тост</div><div class="detail-duration">5 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text"><p>Тост ведущего за молодожёнов.</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Полный текст тоста</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Первый тост</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Я долго думал, что сказать в первом тосте — всё умное уже сказано, всё пафосное вызывает лёгкое дёрганье глаза, а просто «за молодожёнов» слишком коротко для такого дня. Поэтому скажу так: поднимем бокалы за то, что эти двое уже прошли первое семейное испытание — договорились о дате, зале, меню, гостях и рассадке. Если они справились с этим — они справятся с чем угодно.<br><br>
+            Сергей и Настя, пусть впереди будет много красивых дней, вкусных завтраков, спонтанных поездок и моментов, когда вы смотрите друг на друга и думаете: «да, я всё выбрал правильно». За вашу семью — и за то, чтобы после свадьбы вам было ещё лучше, чем до неё!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-gastropause">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">17:40 – 17:55</div><div class="detail-title">Гастропауза</div><div class="detail-duration">15 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🍽️</span> Описание</div>
+        <div class="desc-text"><p>DJ фоном, гости едят закуски.</p><p>🚬 Перекур — естественное окно для курения сразу после тоста. Часть гостей выйдет курить, это нормально. Дальше идёт лёгкий и активный формат (знакомство зала), в который легко вернуть внимание, поэтому перекур здесь не мешает динамике.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-chat-game">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">17:55 – 18:05</div><div class="detail-title">Болталка-знакомство</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text"><p>Интерактив-знакомство всего зала: блиц-опрос гостей поднятием руки, чествование родителей.</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Полный текст ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Болталка-знакомство</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Знаете, что самое странное на свадьбе? В одном зале сидят люди, которые знают жениха с детского сада, люди, которые знают невесту с первой аватарки во ВКонтакте, и гости, которые до сих пор не поняли, они со стороны жениха или их просто красиво посадили. Это не перекличка и не конкурс «кто лучше знает пару» — просто познакомимся, потому что к концу вечера вы все будете петь одну песню, и я хочу, чтобы вы хотя бы знали имена соседей.<br><br>
+            Быстрые вопросы залу — рука вверх, кто:<br>
+            — знает Сергея больше 15 лет?<br>
+            — знает Настю больше 15 лет?<br>
+            — приехал сегодня из другого города?<br>
+            — впервые видит большую часть гостей?<br>
+            — пришёл с детьми?<br>
+            — коллеги молодожёнов?<br>
+            — родственники?<br>
+            — уже внутренне готов танцевать?<br><br>
+            Родителей — прошу отдельно встать, просто встать, ничего говорить не нужно. Пусть все увидят людей, которые однажды воспитали двух человек, стоящих сегодня здесь. Это была ваша работа, и она удалась. Аплодисменты!<br><br>
+            Финал: друзья, полчаса назад вы были разными компаниями — коллеги, родственники, друзья жениха, подруги невесты. Теперь вы одна семья. За знакомство!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-video-rules">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">18:05 – 18:15</div><div class="detail-title">Выход молодых + видео предложения + правила банкета</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🎥</span> Ход блока</div>
+        <div class="desc-text"><p>Выход Сергея и Насти в зал под аплодисменты. Показ видео с предложения руки и сердца.</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Подводка к видео</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">«А давайте вспомним, с чего всё началось.»</div>
+        </div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Правила банкета</div>
+        <div class="desc-text"><p>Далее — короткое объявление правил банкета, максимум три минуты:</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Правила банкета</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">«Горько» сегодня работает не бесплатно — альтернатива придумывается по ходу вечера. Если чей-то тост затянулся — тихонько начинаем хлопать, это сигнал закругляться. Танцевальные паузы — обязательны. Не хотите танцевать — просто достойно сидите. Если саженец поймали не вы — не расстраивайтесь и не мстите. Если забыли конверт — можно сказать «скину на карту», а когда именно это «потом» наступит — решать уже вам. Слушайтесь ведущего — не прячьте эмоции, даже если внутри вам смешно, а снаружи серьёзное лицо.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-support">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">18:15 – 18:25</div><div class="detail-title">Служба поддержки 24/7</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text"><p>Интерактив-загадка про «службы поддержки» в жизни.</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Службы поддержки</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, у каждого из нас в жизни есть свои службы поддержки. Сейчас я буду их описывать, а вы — угадывать.
+            <br><br>Служба поддержки, которая пишет «мы заметили подозрительную операцию» — кто это? (банк). Верно — банк единственный сначала поддерживает, а потом говорит: «поддержка стоит 299 рублей в месяц».
+            <br><br>Служба поддержки, у которой нет приложения, личного кабинета, графика работы и выходных. Она понимает по голосу, что «всё нормально» — на самом деле далеко не нормально. Она может спросить «ты доехал?», «ты поел?», «деньги есть?» — даже если тебе тридцать лет и у тебя своя семья. Что это за служба? (родители).
+            <br><br>Да, это родители — самая первая, самая надёжная и самая тревожная служба поддержки в жизни. И она не отключается после свадьбы, она просто меняет формат: меньше держит за руку, но всё равно держит сердцем.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Сценическое указание</div>
+        <div class="stage-text">Приглашаются родители Сергея и Насти.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Обращение к родителям</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Дорогие родители, сегодня ваши дети создают свою семью. Вы были рядом, когда они делали первые шаги, ошибались, спорили, взрослели. Прошу вас сказать несколько слов и первыми поднять бокалы за своих детей.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Сценическое указание</div>
+        <div class="stage-text">Тост от родителей — по фразе или коротко от каждой стороны.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Благодарность родителям</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">А мы в ответ — аплодисментами поблагодарим этих людей за то, что вырастили таких прекрасных детей!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-child-photo">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">18:25 – 18:35</div><div class="detail-title">Детские фотографии</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Сценическое указание</div>
+        <div class="stage-text">Несколько детских фото на экране, пара тёплых или смешных историй от родителей — например, контраст: невеста всегда в нарядных платьях, жених вечно в грязи и болоте. В конце — оживающая с помощью ИИ-анимации семейная фотография.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Подводка к детским фото</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Вы представляете, сколько мы сейчас с вами видим? Вот Настя — конечно же, в нарядном платье, с бантиком, будто уже тогда репетировала сегодняшний выход. А вот Сергей — почему-то по колено в луже, и, кажется, абсолютно счастлив от этого больше, чем от любого костюма. Уже тогда было видно: одна создана для красивых кадров, а другой — для того, чтобы было с кем в эти лужи прыгать. А если серьёзно — мы видели, как эти двое росли, взрослели, набивали свои первые шишки — а сейчас присутствуем на их свадьбе. Давайте вместе посмотрим путь от детства до первого танца.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📌</span> Нужно подготовить
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">подборка детских фото от обеих семей заранее, файл с ИИ-анимацией готов к показу.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-first-dance">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">18:35 – 19:00</div><div class="detail-title">Первый танец</div><div class="detail-duration">25 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">💃</span> Описание</div>
+        <div class="desc-text"><p>Первый танец молодожёнов. Сразу после — DJ открывает танцпол, танцевальная пауза плавно перетекает во второй блок в 19:00 — здесь дополнительный перекур не нужен, у гостей и так будет свободное время потанцевать / выйти.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-block2">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">19:00 – 20:30</div><div class="detail-title">Второй блок</div><div class="detail-duration">1 час 30 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание блока</div>
+        <div class="desc-text">
+          <p>Технический момент — кухня выносит горячее, ведущий держит связь с координатором. Главный интерактив блока — свадебный Twinby: гости угадывают семейные привычки и договорённости молодожёнов. В конце — процент совместимости зала с парой. После — поздравления гостей и танцевальная пауза.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-twinby">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">19:00 – 19:30</div><div class="detail-title">Свадебный Twinby</div><div class="detail-duration">30 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Вступление к Twinby</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, сейчас у нас будет первый в мире свадебный аналог Тиндера — Твинби. Но спокойно, знакомиться будем не с людьми, люди тут и так все красивые и нарядные. Мы будем свайпать семейные офферы — правила, привычки и договорённости, которые могут появиться в семейной жизни. Ваша задача — угадать, как на это ответили Сергей и Настя. Свайп вправо — берём в семейную жизнь, свайп влево — не мэтч, удаляем из семейной анкеты. В конце узнаем вашу совместимость с молодожёнами — то есть насколько хорошо вы их знаете, или насколько хорошо умеете делать вид, что знаете.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Подготовка</div>
+        <div class="stage-text">Примеры карточек — заранее собрать реальные ответы пары:</div>
+      </div>
+
+      <div class="content-section interactive-block">
+        <div class="section-label"><span class="label-icon">🎯</span> Карточки для Twinby</div>
+        <div class="interactive-text">знать пароль от телефона; общий или раздельный бюджет; отдыхать отдельно; рассказывать друг другу всё сразу; спать под одним одеялом; заводить животных; свидание раз в неделю; кто чаще говорит «извини»; кто первым мирится; кто главный по ремонту; каждый год отмечать годовщину и звать гостей.</div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Ход интерактива</div>
+        <div class="desc-text"><p>После каждой карточки — свайп зала, потом настоящий ответ пары на экране, короткий комментарий ведущего с юмором на тему конкретной привычки. В финале — «совместимость гостей с молодожёнами — [процент]%».</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Финал Twinby</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Сегодня они свайпнули друг друга вправо — и, судя по всему, это был лучший мэтч в их жизни. Поднимем бокалы за то, чтобы в их семье всегда было больше сердечек, чем крестиков, и больше моментов, где они оба выбирают одно и то же — друг друга.</div>
+        </div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📌</span> Нужно подготовить
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">заранее собрать реальные ответы пары на 10–12 карточек-«офферов».</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-congratulations">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">19:30 – 19:50</div><div class="detail-title">Поздравления гостей</div><div class="detail-duration">20 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Формат</div>
+        <div class="stage-text">Открытый микрофон / приглашение конкретных гостей — тёплые слова молодожёнам.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-dance-pause1">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">19:50 – 20:30</div><div class="detail-title">Танцевальная пауза</div><div class="detail-duration">40 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🎵</span> Описание</div>
+        <div class="desc-text"><p>DJ-сет, гости отдыхают, кухня готовится к следующей подаче.</p><p>🚬 Перекур — ещё одно окно для курения. Держать его чуть длиннее обычной танцевальной паузы, минут 10–15, чтобы кухня успела вынести горячее до начала 3-го блока.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-block3">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">20:30 – 22:00</div><div class="detail-title">Третий блок</div><div class="detail-duration">1 час 30 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание блока</div>
+        <div class="desc-text"><p>Самый разрывной блок вечера. «Музыкальный ДНК-тест» в три раунда (угадать песню с первой ноты, спеть со звездой по столикам, дэнс-революция — каждый стол выходит на танцпол под свой трек). Сюда же логично вернуть бросок саженца (вместо букета) и бутоньерку (как и было у организатора), чтобы не перегружать финал в 22:00. Дальше — свободный DJ-сет, а в последние 10 минут перед финалом — отдельный «сбор гостей» с затихающей музыкой, чтобы плавно, а не рывком, перейти к тихой церемонии очага.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-dna-test">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">20:30 – 21:10</div><div class="detail-title">Музыкальный ДНК-тест</div><div class="detail-duration">40 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Вступление</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Знаете, что самое удивительное в человеческой памяти? Я могу не помнить, что ел на завтрак во вторник, но если включить первые три ноты знакомой песни из детства — спою её целиком. Сегодня проверим, насколько хорошо музыка помнит этот зал.</div>
+        </div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🎵</span> Раунд 1 — «С первой ноты»</div>
+        <div class="desc-text"><p>DJ включает первую ноту песни, кто угадал первым — герой, дальше поёт весь стол. Не бойтесь ошибаться — в музыкальном ДНК-тесте главное не точность, а уверенность.</p></div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Подготовка</div>
+        <div class="stage-text">Подобрать плейлист под гостей — от классики 90-х до текущих хитов, с короткими шутливыми комментариями после каждой угаданной песни.</div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🎤</span> Раунд 2 — «Спой со звездой»</div>
+        <div class="desc-text"><p>Ведущий называет исполнителя и конкретный столик — задача стола сразу начать петь любую песню этого артиста, без совещаний. Остальные подпевают и хлопают.</p></div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Подготовка</div>
+        <div class="stage-text">Подобрать исполнителей под возраст и вкусы гостей за столами.</div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">💃</span> Раунд 3 — «Dance Revolution»</div>
+        <div class="desc-text"><p>Каждому столику включается свой трек — задача: узнать песню, встать и первым выйти на танцпол, утаскивая за собой остальные столы. Побеждает не тот, кто танцует профессиональнее, а тот, кто утащил на танцпол больше чужих гостей.</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Финал раунда</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Сегодня мы не просто проверили музыкальную память зала — мы превратили отдельные столы в одну большую компанию. DJ, не отпускаем танцпол — переходим в дискотеку!</div>
+        </div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📌</span> Нужно подготовить
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">заранее подобранный плейлист под гостей — от классики 90-х до текущих хитов.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-sapling">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">21:10 – 21:20</div><div class="detail-title">Саженец + бутоньерка</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">О саженце вместо букета</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, обычно в этот момент бросают букет — и обычно это про угадать, кто следующая. Но сегодня в зале, кажется, все дамы уже давно и счастливо замужем, так что гадать не о чем. Поэтому вместо букета мы бросаем кое-что более живучее — саженец.
+            <br><br>Смысл простой: сегодня рождается не только семья Сергея и Насти, но и маленькое дерево. Кто его поймает — заберёт домой, посадит в саду или в горшке на балконе, и через годы сможет сказать: «этому дереву ровно столько же лет, сколько семье Сергея и Насти».
+            <br><br>Правила те же, что и с букетом: Настя поворачивается спиной к залу, приглашаем всех желающих — сегодня саженец может поймать кто угодно, не только девушки. Техника безопасности прежняя: главное — дружба, поэтому, пожалуйста, сохраняйте в себе человечность, когда будете бороться за саженец.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Клятва участников</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Мы клянёмся… что бы ни происходило… не начинать махач за саженец… а поймав его — поливать регулярно!<br>
+            Раз, два, три!
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Бросок саженца.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">После броска</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Ну что, у нас есть первый садовод этого вечера! Дорогой(ая) [имя], теперь это ваша ответственность — вырастить это дерево. А если что-то пойдёт не так — можно звонить Сергею и Насте за консультацией: кто на моих глазах вырастил целую семью, тот и с деревом как-нибудь справится. За то, чтобы это дерево росло вместе с их семьёй — с каждым годом всё крепче!</div>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">К бутоньерке</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Саженец сегодня ловили охотно, а вот бутоньерку мужчины — обычно не очень. Поэтому и для них клятва (рука на сердце): мы клянёмся не убегать во время броска, а если поймали бутоньерку — принять её с достоинством и гордо поднятой головой, и не кидать в обратную сторону.</div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Бросок бутоньерки.</div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📌</span> Нужно подготовить
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">саженец в горшке / с упаковкой, бутоньерка.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-dj-set">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">21:20 – 21:50</div><div class="detail-title">DJ-сет</div><div class="detail-duration">30 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🎵</span> Описание</div>
+        <div class="desc-text">
+          <p>Свободные танцы, общение, фотографии.</p>
+          <p>🚬 Перекур — ещё одно окно для курения.</p>
+          <p>Ведущий периодически напоминает о ставках со welcome, подогревая интерес к финалу.</p>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Напоминание о ставках</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">А кто уже угадал сегодняшнего экстрасенса?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-gather-hearth">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">21:50 – 22:00</div><div class="detail-title">Сбор гостей перед очагом</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text"><p>Отдельный, специально выделенный переход — не часть свободного танцпола. За 10 минут до очага музыка становится тише, ведущий явно приглашает всех в зал:</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Приглашение к очагу</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Друзья, а сейчас — пожалуйста, соберитесь все у сцены, дальше будет очень личный момент, который не стоит пропускать.</div>
+        </div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">💡</span> Зачем</div>
+        <div class="desc-text"><p>Это даёт залу время физически вернуться с улицы, от бара, от курилки и настроиться на тишину — вместо резкого прыжка из танцпола в лирику.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-final">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:00 – 23:00</div><div class="detail-title">Финальный блок</div><div class="detail-duration">1 час</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание блока</div>
+        <div class="desc-text">
+          <p>Зажжение семейного очага (тихая, личная церемония) → живой коридор и благодарность молодожёнов → общее фото → торт (аукцион услуг) → короткий перекур (последний за вечер) → финал ставок (награждение «главного предсказателя») → клятвы друзей (комедийное чтение) → сразу afterparty.</p>
+          <p>Порядок специально выстроен так, чтобы лиричные моменты (очаг, коридор) были в начале и середине, а вечер заканчивался смехом и сразу перетекал в танцы — без паузы «на остыть» перед afterparty.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-hearth">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:00 – 22:10</div><div class="detail-title">Зажжение семейного очага</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🕯️</span> Как проходит</div>
+        <div class="desc-text"><p>Очень личная и традиционная церемония, без шуток и интерактива — единственный по-настоящему тихий момент вечера. Родители жениха и родители невесты берут в руки зажжённые свечи (зажигают заранее помощники или ведущий, до выхода родителей в зал). Одновременно, с двух сторон, родители подносят огонь к одной большой свече в руках Сергея и Насти — молодожёны держат свечу вдвоём. Ведущий читает текст о преемственности поколений и семейном тепле, при желании — коротко приглашает родителей сказать пару слов напутствия.</p></div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего — полный текст церемонии</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Часть 1 — Начало</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, прошу вас сейчас — просто помолчите со мной несколько минут. Дальше не будет ни шуток, ни конкурсов. Дальше будет то, ради чего, если разобраться, вообще существуют семьи: огонь, который никогда не гаснет, а просто передаётся из одних рук в другие.
+            <br><br>Прошу выйти сюда родителей Сергея и родителей Насти. Сделайте несколько шагов вперёд — тех самых шагов, которые вы делали тысячи раз: навстречу этим детям, когда они падали, болели, боялись, уходили и возвращались. У каждого из вас сейчас в руках зажжётся свеча — не просто огонь, а вся ваша жизнь, отданная на то, чтобы сегодняшний день вообще случился.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Родителям вручают зажжённые свечи.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Часть 2 — О родителях</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, посмотрите на этих людей внимательно — может быть, за весь вечер это самый важный взгляд, который вы сегодня бросите. У каждой пары — свой дом, свои бессонные ночи, свой страх и своя гордость, свой огонь, который они несли на себе много лет: пока растили детей, пока не спали над их температурой, пока ждали их с последнего автобуса, пока молчали, чтобы не мешать им ошибаться и подниматься самим. И сегодня — вот прямо сейчас, у вас на глазах — весь этот труд длиною в жизнь получает продолжение.
+            <br><br>Сергей, Настя, возьмите эту свечу вдвоём. Пока она не горит. И в этом нет ничего страшного — просто до сегодняшнего дня у вас действительно было два разных дома, два разных детства, два разных огня, которые жили сами по себе и даже не подозревали друг о друге.
+            <br><br>Родители Сергея, родители Насти — прошу вас одновременно поднести ваши свечи к свече ваших детей.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Родители с двух сторон одновременно зажигают свечу молодожёнов.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Часть 3 — Огонь стал одним</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Вот так, прямо сейчас, у всех вас на глазах, два огня стали одним. Никто никого не погасил, никто ничем не пожертвовал — просто с этой секунды огонь одной семьи и огонь другой семьи горят в одном доме, одним пламенем, и разделить их назад уже не получится, даже если очень захотеть. Это, возможно, и есть самое честное определение слова «семья».</div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Если родители готовы — короткие слова напутствия, по фразе с каждой стороны.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Часть 4 — Завершение церемонии</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, этой традиции столько же лет, сколько самому человеку — зажигать общий очаг от очагов родителей. И смысл в ней до слёз простой: семья никогда не начинается с нуля. В неё всегда приходит немного тепла из родительского дома — привычка обнимать при встрече, рецепт, который передавали три поколения, фраза «у нас в семье так принято», объятие, которое почему-то лечит лучше любых лекарств. Сергей и Настя, сегодня родители передали вам не просто огонь — они передали вам всё, чем сами когда-то были живы. Пусть в вашем доме он никогда не гаснет: пусть горит в холодные вечера, в детском смехе, который здесь ещё случится, в тихих словах друг другу перед сном через много-много лет. Берегите его так же бережно, как берегли его те, кто сейчас стоит перед вами.
+            <br><br>А теперь, пожалуйста, встаньте — все, кто может. Давайте аплодисментами поблагодарим этих родителей. Не за красивый жест со свечами, а за то, что они действительно сделали: за бессонные ночи, за терпение, за любовь, которую не видно на фотографиях, но благодаря которой сегодняшний день вообще стал возможным.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📌</span> Нужно подготовить
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">свечи для родителей и молодожёнов, зажигалка/спички у помощника, безопасное место для огня.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-corridor">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:10 – 22:20</div><div class="detail-title">Благодарность молодожёнов и живой коридор</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text"><p>Молодожёны говорят несколько слов гостям.</p></div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Слова благодарности от молодожёнов.</div>
+      </div>
+
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🤝</span> Живой коридор</div>
+        <div class="desc-text"><p>Далее — живой коридор: гости выстраиваются в два ряда, Сергей берёт Настю за руку и идёт впереди, Настя идёт следом с закрытыми глазами, полностью доверяя мужу. Каждый гость справа шепчет ей что-то доброе на правое ухо, каждый гость слева — на левое.</p></div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">💡</span> Подсказки для гостей
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">«ты сегодня прекрасна», «у тебя всё получилось», «будьте счастливы».</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-photo">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:20 – 22:25</div><div class="detail-title">Общее фото</div><div class="detail-duration">5 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📸</span> Описание</div>
+        <div class="desc-text"><p>Общее фото всех гостей — сразу после коридора, пока все стоят вместе и растроганы.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-cake">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:25 – 22:35</div><div class="detail-title">Разрезание торта</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Аукцион услуг</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, а вот и он — главный виновник ожидания весь вечер, торт. Сейчас будет самый честный конкурс за сегодня: сегодня кусочек торта — это не просто десерт, а маленькая награда, и заработать её придётся. Устроим аукцион услуг: кто готов предложить молодожёнам что-то полезное в ближайшие три месяца — свозить на дачу, убраться в квартире, посидеть с собакой, а если совсем смелые — вместе съездить к тёще на дачу с лопатой — тот получает кусочек торта. Торопитесь, конкуренция сегодня нешуточная, а кусок один. Молодожёны сами выбирают три лучшие услуги — так что не стесняйтесь, льстите нагло и предметно. Ну а всем остальным гостям кусочек достаётся абсолютно бесплатно — просто потому что вы сегодня с нами, и мы вас, честно говоря, тоже любим, а не только тех, кто обещал прополоть грядки.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Молодожёны выбирают три лучшие услуги — их авторы получают кусочек торта. Остальным гостям торт достаётся бесплатно.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-smoke-break">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:35 – 22:45</div><div class="detail-title">Перекур</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text">
+          <p>🚬 Перекур — последнее окно для курения за вечер.</p>
+          <p>Дальше начинается непрерывная финальная часть: ставки, клятвы друзей и сразу afterparty.</p>
+          <p>Стоит явно анонсировать этот перекур залу:</p>
+        </div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Анонс перекура</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Друзья, дальше будет самое интересное без остановок, так что если кому-то нужно выйти покурить или позвонить — сейчас самое время.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-bets-final">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:45 – 22:50</div><div class="detail-title">Финал ставок</div><div class="detail-duration">5 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Подведение итогов</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Друзья, помните, в начале вечера вы делали прогнозы на сегодня? Пришло время подвести итог.</div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Ведущий пробегается по самым ярким ставкам, которые сбылись за вечер.</div>
+      </div>
+
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Награждение</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">И сейчас мы наградим человека, который увидел будущее лучше всех — почётный титул «главный экстрасенс свадьбы» и шуточный приз достаются… [имя]</div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Вручение — например, надутая резиновая перчатка на подставке в стиле ТВ-шоу.</div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📌</span> Нужно подготовить
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">шуточный приз, подготовленный заранее (например, надутая резиновая перчатка на подставке в стиле ТВ-шоу).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-friends-oaths">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">22:50 – 23:00</div><div class="detail-title">Клятвы друзей — финальный аккорд</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-body">
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Вступление к клятвам</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">А теперь — тот самый момент, ради которого подружки невесты и друзья жениха трудились ещё на welcome. Сергей сейчас прочитает обещания, которые про него написали подружки Насти. А Настя — обещания, которые про неё написали друзья Сергея. Конверты вскрываются первый раз за весь вечер прямо сейчас.</div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Чтение клятв — с юмором и комментариями по ходу. Это обычно самый смешной момент вечера — держите его на максимуме энергии.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="detail-afterparty">
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-time">23:00</div><div class="detail-title">Afterparty 🎉</div><div class="detail-duration">открытый финал</div></div>
+    <div class="detail-body">
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Запуск afterparty</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">Друзья, а теперь — то, ради чего мы все сюда пришли!</div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">DJ сразу выводит танцевальный трек, без пауз и лишних слов — зал должен перетечь со смеха над клятвами прямо в танец.</div>
+      </div>
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">🎉</span> Описание</div>
+        <div class="desc-text"><p>Свободные танцы до конца вечера.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== JAVASCRIPT ======================== -->
+<script>
+const backBtn = document.getElementById('backBtn');
+const navTitle = document.getElementById('navTitle');
+let historyStack = [];
+
+const blockTitles = {
+  'main': 'Свадьба Сергея и Анастасии',
+  'welcome': 'WELCOME-зона', 'ceremony': 'Выездная церемония',
+  'block1': '1-й блок · Начало банкета', 'prolog': 'Пролог',
+  'first-toast': 'Первый тост', 'gastropause': 'Гастропауза',
+  'chat-game': 'Болталка-знакомство', 'video-rules': 'Выход + видео + правила',
+  'support': 'Служба поддержки 24/7', 'child-photo': 'Детские фотографии',
+  'first-dance': 'Первый танец', 'block2': '2-й блок',
+  'twinby': 'Свадебный Twinby', 'congratulations': 'Поздравления гостей',
+  'dance-pause1': 'Танцевальная пауза', 'block3': '3-й блок',
+  'dna-test': 'Музыкальный ДНК-тест', 'sapling': 'Саженец + бутоньерка',
+  'dj-set': 'DJ-сет', 'gather-hearth': 'Сбор гостей перед очагом',
+  'final': 'Финальный блок', 'hearth': 'Зажжение семейного очага',
+  'corridor': 'Живой коридор', 'photo': 'Общее фото',
+  'cake': 'Разрезание торта', 'smoke-break': 'Перекур',
+  'bets-final': 'Финал ставок', 'friends-oaths': 'Клятвы друзей',
+  'afterparty': 'Afterparty'
+};
+
+function showDetail(id) {
+  const prev = document.querySelector('.page.active');
+  if (prev) prev.classList.remove('active');
+  const page = document.getElementById('detail-' + id);
+  if (page) page.classList.add('active');
+  backBtn.classList.add('visible');
+  navTitle.textContent = blockTitles[id] || 'Сценарий';
+  historyStack.push(id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack() {
+  historyStack.pop();
+  const prevId = historyStack.length > 0 ? historyStack[historyStack.length - 1] : 'main';
+  const current = document.querySelector('.page.active');
+  if (current) current.classList.remove('active');
+  if (prevId === 'main') {
+    document.getElementById('page-main').classList.add('active');
+    backBtn.classList.remove('visible');
+    navTitle.textContent = 'Свадьба Сергея и Анастасии';
+  } else {
+    const page = document.getElementById('detail-' + prevId);
+    if (page) page.classList.add('active');
+    backBtn.classList.add('visible');
+    navTitle.textContent = blockTitles[prevId] || 'Сценарий';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleHost(btn) {
+  const content = btn.nextElementSibling;
+  const arrow = btn.querySelector('.toggle-arrow');
+  const isOpen = content.classList.toggle('open');
+  arrow.textContent = isOpen ? '▲' : '▼';
+}
+
+function toggleGroup(btn) {
+  const group = btn.closest('.timeline-group');
+  const subitems = group.querySelector('.group-subitems');
+  const arrow = btn.querySelector('.toggle-arrow-group');
+  const text = btn.querySelector('.toggle-text');
+  if (!subitems) return;
+  const isCollapsed = subitems.classList.toggle('collapsed');
+  arrow.classList.toggle('collapsed');
+  text.textContent = isCollapsed ? 'развернуть' : subitems.querySelectorAll(':scope > .timeline-section.sub').length + ' блока';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && historyStack.length > 0) goBack();
+});
+</script>
+
+</body>
+</html>
