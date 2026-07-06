@@ -437,6 +437,30 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
   letter-spacing: 0.5px;
 }
 
+/* ── SDE Checklist ── */
+.sde-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.sde-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line-soft);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.sde-checklist li:last-child { border-bottom: none; }
+.sde-checklist li.done { opacity: 0.4; text-decoration: line-through; }
+.sde-checklist li input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
   main, .detail-page { padding: 72px 16px 80px; }
@@ -632,10 +656,10 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
           <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('first-toast')"><div class="card-header"><div><span class="time">17:35 – 17:40</span><div class="card-title" style="font-size:17px">🥂 Первый тост</div></div><span class="duration">5 мин</span></div><div class="card-desc">Тост ведущего за молодожёнов</div></div></div>
           <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('gastropause')"><div class="card-header"><div><span class="time">17:40 – 17:55</span><div class="card-title" style="font-size:17px">🍽️ Гастропауза</div></div><span class="duration">15 мин</span></div><div class="card-desc">Гости едят закуски, DJ фоном</div><span class="card-badge food">перерыв</span></div></div>
           <div class="timeline-section sub break"><div class="timeline-card"><div class="card-header"><div><span class="time">17:40 – 17:55</span><div class="card-title" style="font-size:14px">🚬 Перекур</div></div></div></div></div>
-          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('chat-game')"><div class="card-header"><div><span class="time">17:55 – 18:05</span><div class="card-title" style="font-size:17px">💬 Болталка-знакомство</div></div><span class="duration">10 мин</span></div><div class="card-desc">Интерактив-знакомство всего зала, чествование родителей</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('chat-game')"><div class="card-header"><div><span class="time">17:55 – 18:05</span><div class="card-title" style="font-size:17px">💬 Болталка-знакомство</div></div><span class="duration">10 мин</span></div><div class="card-desc">Интерактив-знакомство всего зала, чествование папы невесты</div><span class="card-badge interactive">интерактив</span></div></div>
           <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('video-rules')"><div class="card-header"><div><span class="time">18:05 – 18:15</span><div class="card-title" style="font-size:17px">🎬 Выход молодых + видео + правила</div></div><span class="duration">10 мин</span></div><div class="card-desc">Выход Сергея и Насти, видео предложения, правила банкета</div></div></div>
-          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('support')"><div class="card-header"><div><span class="time">18:15 – 18:25</span><div class="card-title" style="font-size:17px">👨‍👩‍👧 Служба поддержки 24/7</div></div><span class="duration">10 мин</span></div><div class="card-desc">Интерактив-загадка + приглашение родителей и тост</div><span class="card-badge interactive">интерактив</span></div></div>
-          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('child-photo')"><div class="card-header"><div><span class="time">18:25 – 18:35</span><div class="card-title" style="font-size:17px">📸 Детские фотографии</div></div><span class="duration">10 мин</span></div><div class="card-desc">Детские фото на экране, истории от родителей, ИИ-анимация</div></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('support')"><div class="card-header"><div><span class="time">18:15 – 18:25</span><div class="card-title" style="font-size:17px">👨‍👩‍👧 Служба поддержки 24/7</div></div><span class="duration">10 мин</span></div><div class="card-desc">Интерактив-загадка + приглашение лучших друзей и подруг</div><span class="card-badge interactive">интерактив</span></div></div>
+          <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('child-photo')"><div class="card-header"><div><span class="time">18:25 – 18:35</span><div class="card-title" style="font-size:17px">🎨 Рисунки друзей</div></div><span class="duration">10 мин</span></div><div class="card-desc">ИИ-рисунки друзей на экране — гости угадывают кто это</div></div></div>
           <div class="timeline-section sub"><div class="timeline-card" onclick="showDetail('first-dance')"><div class="card-header"><div><span class="time">18:35 – 19:00</span><div class="card-title" style="font-size:17px">💃 Первый танец</div></div><span class="duration">25 мин</span></div><div class="card-desc">Первый танец молодожёнов → DJ открывает танцпол</div><span class="card-badge dance">танец</span></div></div>
         </div>
       </div>
@@ -741,6 +765,70 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
         <div class="section-label"><span class="label-icon">📋</span> Описание</div>
         <div class="desc-text">
           <p>Ведущий встречает гостей у входа, лёгкое общение, фото, музыка фоном. Параллельно координатор или помощник запускают два интерактива с карточками, не дожидаясь, пока соберутся все гости:</p>
+          <p><b>📹 В это же время снимается SDE-ролик</b> — видеооператор работает с гостями и деталями.</p>
+        </div>
+      </div>
+
+      <div class="content-section note-block">
+        <button class="section-label note-toggle" onclick="toggleHost(this)">
+          <span class="label-icon">📹</span> Вопросы для SDE-ролика
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="note-content">
+          <div class="note-text">
+            <b>Блок 1. Знакомство с гостем</b>
+            <ul class="sde-checklist">
+              <li><input type="checkbox"> Представьтесь: кто вы молодожёнам?</li>
+              <li><input type="checkbox"> Как давно вы знакомы с женихом и невестой?</li>
+              <li><input type="checkbox"> Расскажите историю о молодожёнах, которую мало кто знает.</li>
+              <li><input type="checkbox"> Какими тремя словами вы бы описали эту пару?</li>
+            </ul>
+
+            <b>Блок 2. История любви и отношения</b>
+            <ul class="sde-checklist">
+              <li><input type="checkbox"> Когда вы впервые поняли, что они действительно подходят друг другу?</li>
+              <li><input type="checkbox"> Что вас больше всего восхищает в их отношениях?</li>
+              <li><input type="checkbox"> Какое качество жениха вы больше всего цените?</li>
+              <li><input type="checkbox"> Какое качество невесты вы больше всего цените?</li>
+              <li><input type="checkbox"> Что они дают друг другу?</li>
+              <li><input type="checkbox"> Почему, по-вашему, они выбрали именно друг друга?</li>
+            </ul>
+
+            <b>Блок 3. Вопросы с фантазией и подвохом</b>
+            <ul class="sde-checklist">
+              <li><input type="checkbox"> Если бы отношения молодожёнов были фильмом — как бы он назывался?</li>
+              <li><input type="checkbox"> Если бы у их семьи был девиз — что было бы написано на гербе?</li>
+              <li><input type="checkbox"> Если бы их любовь была блюдом — что бы это было и почему?</li>
+              <li><input type="checkbox"> Если бы молодожёны открыли семейный бизнес — чем бы они занимались?</li>
+              <li><input type="checkbox"> Какой закон вы бы добавили в их семейную конституцию?</li>
+              <li><input type="checkbox"> Если бы их отношения были погодой — какая это была бы погода?</li>
+              <li><input type="checkbox"> Если бы их любовь была песней — какой был бы жанр?</li>
+              <li><input type="checkbox"> Какое название получила бы первая глава их семейной книги?</li>
+              <li><input type="checkbox"> Какой суперспособностью должна обладать эта пара, чтобы сохранить любовь на 50 лет?</li>
+              <li><input type="checkbox"> Если бы можно было подарить им один семейный навык — что бы это было?</li>
+              <li><input type="checkbox"> Если бы их семейная жизнь была сериалом — сколько сезонов он бы длился и о чём был бы последний сезон?</li>
+              <li><input type="checkbox"> Какой предмет в их доме через 10 лет будет хранить больше всего историй?</li>
+              <li><input type="checkbox"> Если бы их отношения были местом на карте — куда бы мы приехали?</li>
+              <li><input type="checkbox"> Какую смешную семейную традицию им обязательно нужно завести?</li>
+            </ul>
+
+            <b>Блок 4. Будущее и пожелания</b>
+            <ul class="sde-checklist">
+              <li><input type="checkbox"> Какими вы представляете их через 10 лет?</li>
+              <li><input type="checkbox"> Какой главный совет вы дадите им для счастливого брака?</li>
+              <li><input type="checkbox"> Что никогда нельзя забывать супругам друг о друге?</li>
+              <li><input type="checkbox"> Что вы хотите пожелать им сегодня?</li>
+              <li><input type="checkbox"> Скажите им обращение напрямую в камеру.</li>
+              <li><input type="checkbox"> Закончите фразу: «Любовь — это…»</li>
+              <li><input type="checkbox"> Закончите фразу: «Через 30 лет я хочу увидеть вас…»</li>
+              <li><input type="checkbox"> Три слова, которые вы оставляете молодожёнам на всю жизнь.</li>
+            </ul>
+
+            <b>Финальный вопрос для каждого гостя</b>
+            <ul class="sde-checklist">
+              <li><input type="checkbox"> Посмотрите в камеру и скажите: «Дорогие (имена), я хочу пожелать вам…»</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -960,7 +1048,7 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
       <div class="content-section desc-block">
         <div class="section-label"><span class="label-icon">📋</span> Описание блока</div>
         <div class="desc-text">
-          <p>Пролог, первый тост, гастропауза, интерактив-знакомство всего зала, выход молодожёнов, видео предложения, короткие правила банкета, блок «служба поддержки 24/7» с приглашением родителей, детские фото и тёплые слова родителям, первый танец, затем DJ сразу открывает танцпол.</p>
+          <p>Пролог, первый тост, гастропауза, интерактив-знакомство всего зала, выход молодожёнов, видео предложения, короткие правила банкета, блок «служба поддержки 24/7» с приглашением лучших друзей и подруг, рисунки друзей и тёплые слова папы, первый танец, затем DJ сразу открывает танцпол.</p>
           <p><b>Важно:</b> гастропауза стоит сразу после первого тоста специально — дальше эмоциональный блок (родители → дети → танец) идёт без остановки на перекур.</p>
         </div>
       </div>
@@ -1075,7 +1163,7 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
             — коллеги молодожёнов?<br>
             — родственники?<br>
             — уже внутренне готов танцевать?<br><br>
-            Родителей — прошу отдельно встать, просто встать, ничего говорить не нужно. Пусть все увидят людей, которые однажды воспитали двух человек, стоящих сегодня здесь. Это была ваша работа, и она удалась. Аплодисменты!<br><br>
+            Папу Насти — прошу отдельно встать, просто встать, ничего говорить не нужно. Пусть все увидят человека, который вырастил невесту, стоящую сегодня перед нами. Это была ваша работа, и она удалась. Аплодисменты!<br><br>
             Финал: друзья, полчаса назад вы были разными компаниями — коллеги, родственники, друзья жениха, подруги невесты. Теперь вы одна семья. За знакомство!
           </div>
         </div>
@@ -1131,7 +1219,7 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
     <div class="detail-body">
       <div class="content-section desc-block">
         <div class="section-label"><span class="label-icon">📋</span> Описание</div>
-        <div class="desc-text"><p>Интерактив-загадка про «службы поддержки» в жизни.</p></div>
+        <div class="desc-text"><p>Интерактив-загадка про «службы поддержки» в жизни. В конце — приглашение лучших друзей и подруг.</p></div>
       </div>
 
       <div class="content-section host-block">
@@ -1143,47 +1231,31 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
         </button>
         <div class="host-content">
           <div class="host-text">
-            Друзья, у каждого из нас в жизни есть свои службы поддержки. Сейчас я буду их описывать, а вы — угадывать.
-            <br><br>Служба поддержки, которая пишет «мы заметили подозрительную операцию» — кто это? (банк). Верно — банк единственный сначала поддерживает, а потом говорит: «поддержка стоит 299 рублей в месяц».
-            <br><br>Служба поддержки, у которой нет приложения, личного кабинета, графика работы и выходных. Она понимает по голосу, что «всё нормально» — на самом деле далеко не нормально. Она может спросить «ты доехал?», «ты поел?», «деньги есть?» — даже если тебе тридцать лет и у тебя своя семья. Что это за служба? (родители).
-            <br><br>Да, это родители — самая первая, самая надёжная и самая тревожная служба поддержки в жизни. И она не отключается после свадьбы, она просто меняет формат: меньше держит за руку, но всё равно держит сердцем.
+            Друзья, у каждого из нас в жизни есть свои службы поддержки. Сейчас я буду их описывать, а вы — угадывать.<br><br>
+            Служба поддержки, которая пишет «мы заметили подозрительную операцию» — кто это? (банк). Верно — банк единственный сначала поддерживает, а потом говорит: «поддержка стоит 299 рублей в месяц».<br><br>
+            Служба поддержки, которая всегда обещает привезти заказ «в течение часа», но ты всё равно каждые десять минут смотришь на карту курьера — кто это? (доставка еды). Точно — единственная служба поддержки, где фраза «ваш заказ задерживается» звучит разрушительнее, чем «нам надо поговорить».<br><br>
+            Служба поддержки, у которой нет приложения, личного кабинета, графика работы и выходных. Она отвечает на звонок в три часа ночи только потому что «мне срочно надо тебе кое-что сказать», она годами хранит все ваши секреты и никогда их не выдаёт, и именно она помогала выбирать платье, костюм и вообще пережить весь этот подготовительный хаос. Что это за служба? (лучшие друзья и лучшие подруги).<br><br>
+            Да, это лучшие друзья и лучшие подруги — служба поддержки, которую не назначают, а выбирают сами, и которая работает без выходных просто потому, что искренне любит. Без них сегодня тоже никуда.
           </div>
         </div>
       </div>
 
       <div class="content-section stage-block">
         <div class="section-label"><span class="label-icon">🎬</span> Сценическое указание</div>
-        <div class="stage-text">Приглашаются родители Сергея и Насти.</div>
+        <div class="stage-text">Приглашаются лучшие друзья Сергея и лучшие подруги Насти.</div>
       </div>
 
       <div class="content-section host-block">
         <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
         <button class="host-toggle" onclick="toggleHost(this)">
           <span class="toggle-icon">💬</span>
-          <span class="toggle-label">Обращение к родителям</span>
+          <span class="toggle-label">Обращение к друзьям</span>
           <span class="toggle-arrow">▼</span>
         </button>
         <div class="host-content">
           <div class="host-text">
-            Дорогие родители, сегодня ваши дети создают свою семью. Вы были рядом, когда они делали первые шаги, ошибались, спорили, взрослели. Прошу вас сказать несколько слов и первыми поднять бокалы за своих детей.
+            Дорогие друзья, сегодня перед вами не просто гости — а те, кто все эти годы был рядом с Серёжей и Настей: слушал, поддерживал, иногда спасал от плохих решений, а иногда наоборот — подначивал на хорошие. Прошу вас сказать несколько слов и первыми поднять бокалы за них. (Тост от друзей — по паре фраз с каждой стороны.) А мы в ответ — аплодисментами поблагодарим этих людей за то, что все эти годы были рядом!
           </div>
-        </div>
-      </div>
-
-      <div class="content-section stage-block">
-        <div class="section-label"><span class="label-icon">🎬</span> Сценическое указание</div>
-        <div class="stage-text">Тост от родителей — по фразе или коротко от каждой стороны.</div>
-      </div>
-
-      <div class="content-section host-block">
-        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
-        <button class="host-toggle" onclick="toggleHost(this)">
-          <span class="toggle-icon">💬</span>
-          <span class="toggle-label">Благодарность родителям</span>
-          <span class="toggle-arrow">▼</span>
-        </button>
-        <div class="host-content">
-          <div class="host-text">А мы в ответ — аплодисментами поблагодарим этих людей за то, что вырастили таких прекрасных детей!</div>
         </div>
       </div>
     </div>
@@ -1192,23 +1264,27 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
 
 <div class="page" id="detail-child-photo">
   <div class="detail-page">
-    <div class="detail-header"><div class="detail-time">18:25 – 18:35</div><div class="detail-title">Детские фотографии</div><div class="detail-duration">10 минут</div></div>
+    <div class="detail-header"><div class="detail-time">18:25 – 18:35</div><div class="detail-title">Рисунки друзей</div><div class="detail-duration">10 минут</div></div>
     <div class="detail-body">
-      <div class="content-section stage-block">
-        <div class="section-label"><span class="label-icon">🎬</span> Сценическое указание</div>
-        <div class="stage-text">Несколько детских фото на экране, пара тёплых или смешных историй от родителей — например, контраст: невеста всегда в нарядных платьях, жених вечно в грязи и болоте. В конце — оживающая с помощью ИИ-анимации семейная фотография.</div>
+      <div class="content-section desc-block">
+        <div class="section-label"><span class="label-icon">📋</span> Описание</div>
+        <div class="desc-text"><p>Показ нескольких нарисованных друзей на экране — задача гостей угадать кто это. Нужно: подборка фото обработанных в ИИ в стиль детского 5-ти летнего ребенка.</p></div>
       </div>
 
       <div class="content-section host-block">
         <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
         <button class="host-toggle" onclick="toggleHost(this)">
           <span class="toggle-icon">💬</span>
-          <span class="toggle-label">Подводка к детским фото</span>
+          <span class="toggle-label">Подводка к рисункам друзей</span>
           <span class="toggle-arrow">▼</span>
         </button>
         <div class="host-content">
           <div class="host-text">
-            Вы представляете, сколько мы сейчас с вами видим? Вот Настя — конечно же, в нарядном платье, с бантиком, будто уже тогда репетировала сегодняшний выход. А вот Сергей — почему-то по колено в луже, и, кажется, абсолютно счастлив от этого больше, чем от любого костюма. Уже тогда было видно: одна создана для красивых кадров, а другой — для того, чтобы было с кем в эти лужи прыгать. А если серьёзно — мы видели, как эти двое росли, взрослели, набивали свои первые шишки — а сейчас присутствуем на их свадьбе. Давайте вместе посмотрим путь от детства до первого танца.
+            Но вот вы думаете, что прикол с фактами о молодых был самым главным моим удивлением? Нет. Не тут то было. Я попросил Настю скинуть фотки своих друзей, чтобы я вас мои дорогие друзья смог узнать на празднике (вдруг к нам решит заглянуть вот этот самый Валера из соседней деревни, который под видом родственника ходит на свадьбы халявно бухнуть).<br><br>
+            Но так как Настя у нас деловая колбаса и у нее всегда очень мало времени, она знаете что мне прислала? Она скинула рисунки, которые она сделала в такси!<br><br>
+            Да да, она друзей просто нарисовала!<br><br>
+            Сейчас я вам покажу.<br>
+            А вы постарайтесь узнать кто это!
           </div>
         </div>
       </div>
@@ -1219,7 +1295,7 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
           <span class="toggle-arrow">▼</span>
         </button>
         <div class="note-content">
-          <div class="note-text">подборка детских фото от обеих семей заранее, файл с ИИ-анимацией готов к показу.</div>
+          <div class="note-text">подборка фото друзей, обработанных в ИИ в стиль детского рисунка 5-летнего ребенка.</div>
         </div>
       </div>
     </div>
@@ -1481,6 +1557,25 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
         <div class="stage-text">Бросок бутоньерки.</div>
       </div>
 
+      <div class="content-section host-block">
+        <div class="section-label"><span class="label-icon">💬</span> Речь ведущего</div>
+        <button class="host-toggle" onclick="toggleHost(this)">
+          <span class="toggle-icon">💬</span>
+          <span class="toggle-label">Анонс SDE-ролика</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="host-content">
+          <div class="host-text">
+            Друзья, а теперь — маленький сюрприз. Пока вы все были заняты важными делами — ели, пили, танцевали, бросали саженцы и туфли — наши видеооператоры тихонько делали свою работу. И вот теперь я с гордостью могу сказать: из этого получился мини-фильм. Смотрим!
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section stage-block">
+        <div class="section-label"><span class="label-icon">🎬</span> Действие</div>
+        <div class="stage-text">Показ SDE-ролика на экране.</div>
+      </div>
+
       <div class="content-section note-block">
         <button class="section-label note-toggle" onclick="toggleHost(this)">
           <span class="label-icon">📌</span> Нужно подготовить
@@ -1572,7 +1667,7 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
     <div class="detail-body">
       <div class="content-section desc-block">
         <div class="section-label"><span class="label-icon">🕯️</span> Как проходит</div>
-        <div class="desc-text"><p>Очень личная и традиционная церемония, без шуток и интерактива — единственный по-настоящему тихий момент вечера. Родители жениха и родители невесты берут в руки зажжённые свечи (зажигают заранее помощники или ведущий, до выхода родителей в зал). Одновременно, с двух сторон, родители подносят огонь к одной большой свече в руках Сергея и Насти — молодожёны держат свечу вдвоём. Ведущий читает текст о преемственности поколений и семейном тепле, при желании — коротко приглашает родителей сказать пару слов напутствия.</p></div>
+        <div class="desc-text"><p>Очень личная и традиционная церемония, без шуток и интерактива — единственный по-настоящему тихий момент вечера. Папа Насти и её самые близкие подруги, уже создавшие свои семьи, берут в руки зажжённые свечи (зажигают заранее помощники или ведущий, до их выхода в зал). Они подносят огонь к одной большой свече в руках Сергея и Насти — молодожёны держат свечу вдвоём. Ведущий читает текст о преемственности поколений и семейном тепле, при желании — коротко приглашает папу сказать пару слов напутствия.</p></div>
       </div>
 
       <div class="content-section host-block">
@@ -1585,7 +1680,7 @@ main { max-width: 640px; margin: 0 auto; padding: 80px 32px 120px; }
         <div class="host-content">
           <div class="host-text">
             Друзья, прошу вас сейчас — просто помолчите со мной несколько минут. Дальше не будет ни шуток, ни конкурсов. Дальше будет то, ради чего, если разобраться, вообще существуют семьи: огонь, который никогда не гаснет, а просто передаётся из одних рук в другие.
-            <br><br>Прошу выйти сюда родителей Сергея и родителей Насти. Сделайте несколько шагов вперёд — тех самых шагов, которые вы делали тысячи раз: навстречу этим детям, когда они падали, болели, боялись, уходили и возвращались. У каждого из вас сейчас в руках зажжётся свеча — не просто огонь, а вся ваша жизнь, отданная на то, чтобы сегодняшний день вообще случился.
+            <br><br>Прошу выйти сюда папу Насти и рядом с ним — её самых близких подруг, тех, что уже сами давно создали свои семьи. Сделайте несколько шагов вперёд — тех самых шагов, которые каждый из вас столько раз делал рядом с Настей: когда она падала, болела, боялась, уходила и возвращалась. Сейчас в ваших руках зажжётся свеча — не просто огонь, а вся ваша забота и любовь, отданные на то, чтобы сегодняшний день вообще случился.
           </div>
         </div>
       </div>
@@ -1874,7 +1969,7 @@ const blockTitles = {
   'block1': '1-й блок · Начало банкета', 'prolog': 'Пролог',
   'first-toast': 'Первый тост', 'gastropause': 'Гастропауза',
   'chat-game': 'Болталка-знакомство', 'video-rules': 'Выход + видео + правила',
-  'support': 'Служба поддержки 24/7', 'child-photo': 'Детские фотографии',
+  'support': 'Служба поддержки 24/7', 'child-photo': 'Рисунки друзей',
   'first-dance': 'Первый танец', 'block2': '2-й блок',
   'twinby': 'Свадебный Twinby', 'congratulations': 'Поздравления гостей',
   'dance-pause1': 'Танцевальная пауза', 'block3': '3-й блок',
@@ -1922,6 +2017,23 @@ function toggleHost(btn) {
   const isOpen = content.classList.toggle('open');
   arrow.textContent = isOpen ? '▲' : '▼';
 }
+
+function initSdeChecklist() {
+  const STORAGE_KEY = 'sde-checklist';
+  const checkboxes = document.querySelectorAll('.sde-checklist input[type="checkbox"]');
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  checkboxes.forEach((cb, i) => {
+    cb.checked = !!saved[i];
+    if (cb.checked) cb.closest('li').classList.add('done');
+    cb.addEventListener('change', () => {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      data[i] = cb.checked;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      cb.closest('li').classList.toggle('done', cb.checked);
+    });
+  });
+}
+initSdeChecklist();
 
 function toggleGroup(btn) {
   const group = btn.closest('.timeline-group');
